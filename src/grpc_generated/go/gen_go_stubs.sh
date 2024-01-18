@@ -29,9 +29,18 @@ PACKAGE="grpc-client"
 
 # Clean up before
 rm -rf ./core
+mkdir core
 
 # Get the proto files from the common repo
-mkdir core && cp common/protobuf/*.proto core/.
+git init common
+cd ./common
+git remote add -f origin https://github.com/triton-inference-server/common.git || echo "triton-inference-server/common origin already added"
+git config core.sparseCheckout true
+echo "protobuf" > .git/info/sparse-checkout
+git pull origin main
+cd ../
+cp common/protobuf/*.proto core/.
+rm -rf common
 
 for i in ./core/*.proto
 do 

@@ -1,4 +1,4 @@
-module github.com/triton-inference-server/client/src/grpc_generated/go
+module github.com/julianguinard/triton-inference-server-client/src/grpc_generated/go
 
 go 1.21
 
